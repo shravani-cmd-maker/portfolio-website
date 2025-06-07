@@ -1,5 +1,4 @@
-/* style.css */
-
+/* General Reset and Font */
 * {
   margin: 0;
   padding: 0;
@@ -11,19 +10,61 @@ body {
   background: #f9f9f9;
   color: #333;
   line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
 }
 
+/* Header & Profile */
 header {
   background: #222;
   color: #fff;
   padding: 2rem 1rem;
-  text-align: center;
 }
 
-header h1 {
-  font-size: 2.5rem;
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Typing Effect */
+.typing-text {
+  font-weight: 600;
+  font-size: 2rem;
+  border-right: 3px solid;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(20, end) forwards, blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+/* Sections */
 section {
   padding: 2rem 1rem;
   max-width: 1000px;
@@ -53,9 +94,30 @@ section {
   border-radius: 5px;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 1rem;
   background: #222;
   color: #fff;
 }
+
+/* Dark Mode */
+body.dark-mode {
+  background: #121212;
+  color: #f1f1f1;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+  background: #1e1e1e;
+}
+
+body.dark-mode .project-card {
+  background: #1f1f1f;
+}
+
+body.dark-mode .resume-button {
+  background: #444;
+}
+
