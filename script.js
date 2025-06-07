@@ -1,7 +1,12 @@
-// script.js
-
-// Scroll-to-top button functionality
+// Theme toggle and scroll to top
 document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.getElementById("theme-toggle");
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    toggle.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+  });
+
+  // Scroll-to-top button
   const toTopButton = document.createElement("button");
   toTopButton.innerText = "⬆️ Top";
   toTopButton.style.position = "fixed";
@@ -14,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   toTopButton.style.borderRadius = "5px";
   toTopButton.style.cursor = "pointer";
   toTopButton.style.display = "none";
+  toTopButton.style.zIndex = "1000";
 
   document.body.appendChild(toTopButton);
 
@@ -24,4 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
   toTopButton.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+  // Typing animation re-trigger (optional)
+  const nameEl = document.querySelector(".typing-text");
+  nameEl.classList.remove("typing-text");
+  void nameEl.offsetWidth; // reflow
+  nameEl.classList.add("typing-text");
 });
+
